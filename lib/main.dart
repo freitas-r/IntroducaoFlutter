@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Introdução ao Flutter'),
     );
   }
 }
@@ -78,6 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          IconButton(
+              onPressed: _incrementCounter,
+              icon: Icon(Icons.add_box, color: Colors.black))
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -99,16 +104,21 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Número de cliques:',
-            ),
+            const Padding(
+                padding: EdgeInsets.only(bottom: 30.0, top: 30.0),
+                child: Text(
+                  'Número de cliques:',
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                )),
             Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline4,
+              style: Theme.of(context).textTheme.headline3,
             ),
+            Icon(Icons.directions_bus_outlined,
+                size: 120.0, color: Colors.black),
+            Image.network(
+                'https://pbs.twimg.com/profile_images/1187814172307800064/MhnwJbxw_400x400.jpg',
+                width: 120)
           ],
         ),
       ),
