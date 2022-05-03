@@ -73,7 +73,17 @@ void mainEntidades(){
     'salario': '10000.0'
   };
 
-  Pessoa pessoa = Programador.fromMap(map);
+  List<String> nomes = ['Carlos', 'Alberto', 'João'];
+
+  for(int i = 0; i < nomes.length; i++){
+    if(nomes[i].toUpperCase().startsWith('J')){
+      break;
+    }
+    print("$i - ${nomes[i]}");
+
+  }
+
+  // Pessoa pessoa = Programador.fromMap(map);
   // pessoa.nome = "Reginaldo";
   // pessoa.cpf = "111.222.333-44";
   // pessoa.nascimento = DateTime(1990, 05, 07);
@@ -81,5 +91,5 @@ void mainEntidades(){
   // pessoa.sexo = Sexo.Masculino;
   // pessoa.salario = isBoss ? 20000.0 : 5000.0;
 
-  print(pessoa.toString());
+  // print(pessoa.toString());
 }
