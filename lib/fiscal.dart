@@ -34,12 +34,12 @@ class NotaFiscal {
     return listaItens.map((item) => item.acrescimo).reduce((a, b) => a + b);
   }
 
-  double getProdutoMaisBarato() {
-    return listaItens.map((item) => item.valor).reduce((a, b) => a < b ? a : b);
+  ItemNF getProdutoMaisBarato() {
+    return listaItens.reduce((a, b) => a.getValorTotal() < b.getValorTotal() ? a : b);
   }
 
-  double getProdutoMaisCaro() {
-    return listaItens.map((item) => item.valor).reduce((a, b) => a > b ? a : b);
+  ItemNF getProdutoMaisCaro() {
+    return listaItens.reduce((a, b) => a.getValorTotal() > b.getValorTotal() ? a : b);
   }
 
   bool possuiDesconto(){
@@ -100,14 +100,14 @@ void mainNotaFiscal(){
       enderecoEntrega: "Rua 7 de Setembro, 1600",
       numero: 133);
   nota.cliente = pessoa;
-  nota.addItem(produto: 'Notebook', valor: 1000.0);
+  nota.addItem(produto: 'Notebook', valor: 1000.0, desconto: 50);
   nota.addItem(produto: 'Monitor', valor: 500.0, acrescimo: 20);
   nota.addItem(produto: 'Mouse', valor: 100, desconto: 10);
   nota.addItem(produto: 'Mouse', valor: 50.0);
   double valorTotal = nota.calcularValorTotal();
   print('Valor total da NF = $valorTotal');
-  print('Produto mais barato = ${nota.getProdutoMaisBarato()}');
-  print('Produto mais caro = ${nota.getProdutoMaisCaro()}');
+  print('Produto mais barato = ${nota.getProdutoMaisBarato().produto}');
+  print('Produto mais caro = ${nota.getProdutoMaisCaro().produto}');
   if(nota.possuiDesconto()){
     print('oi');
   }
